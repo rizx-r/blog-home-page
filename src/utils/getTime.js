@@ -72,28 +72,48 @@ export const getTimeCapsule = () => {
 export const helloInit = () => {
   const hour = new Date().getHours();
   let hello = null;
+
+  // 英文问候
   if (hour < 6) {
-    hello = "凌晨好";
+    hello = "Good early morning";
   } else if (hour < 9) {
-    hello = "早上好";
+    hello = "Good morning";
   } else if (hour < 12) {
-    hello = "上午好";
+    hello = "Good late morning";
   } else if (hour < 14) {
-    hello = "中午好";
+    hello = "Good noon";
   } else if (hour < 17) {
-    hello = "下午好";
+    hello = "Good afternoon";
   } else if (hour < 19) {
-    hello = "傍晚好";
+    hello = "Good evening";
   } else if (hour < 22) {
-    hello = "晚上好";
+    hello = "Good night";
   } else {
-    hello = "夜深了";
+    hello = "It's late at night";
   }
+
+  // 识别用户操作系统
+  const ua = navigator.userAgent;
+  let os = "Unknown OS";
+
+  if (/Windows/i.test(ua)) {
+    os = "Windows";
+  } else if (/Mac OS|Macintosh/i.test(ua)) {
+    os = "macOS";
+  } else if (/Linux/i.test(ua)) {
+    os = "Linux";
+  } else if (/Android/i.test(ua)) {
+    os = "Android";
+  } else if (/iPhone|iPad|iOS/i.test(ua)) {
+    os = "iOS";
+  }
+
   ElMessage({
     dangerouslyUseHTMLString: true,
-    message: `<strong>${hello}</strong> 欢迎来到我的主页`,
+    message: `<strong>${hello}</strong>, ${os} user`,
   });
 };
+
 
 // 默哀模式
 const anniversaries = {
@@ -101,6 +121,7 @@ const anniversaries = {
   5.12: "汶川大地震纪念日",
   7.7: "中国人民抗日战争纪念日",
   9.18: "九·一八事变纪念日",
+  10.11: "币圈162万人爆仓191亿USD",
   12.13: "南京大屠杀死难者国家公祭日",
 };
 export const checkDays = () => {
