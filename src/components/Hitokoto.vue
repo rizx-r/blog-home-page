@@ -28,51 +28,41 @@
 </template>
 
 <script setup>
-import { MusicMenu, Error } from "@icon-park/vue-next";
-import { getHitokoto } from "@/api";
+import { MusicMenu } from "@icon-park/vue-next";
 import { mainStore } from "@/store";
-import debounce from "@/utils/debounce.js";
+import hitokotoList from "@/data/hitokoto.json";
 
 const store = mainStore();
 
 // 开启音乐面板按钮显隐
 const openMusicShow = ref(false);
 
-// 一言数据
 const hitokotoData = reactive({
-  text: "这里应该显示一句话",
-  from: "無名",
+  text: "",
+  from: "公告",
 });
+const currentIndex = ref(0);
+let timer = null;
 
-// 获取一言数据
-const getHitokotoData = async () => {
-  try {
-    const result = await getHitokoto();
-    hitokotoData.text = result.hitokoto;
-    hitokotoData.from = result.from;
-  } catch (error) {
-    ElMessage({
-      message: "一言获取失败",
-      icon: h(Error, {
-        theme: "filled",
-        fill: "#efefef",
-      }),
-    });
-    hitokotoData.text = "这里应该显示一句话";
-    hitokotoData.from = "無名";
-  }
+const setFromList = (index) => {
+  const item = hitokotoList[index % hitokotoList.length];
+  hitokotoData.text = item.hitokoto || "";
+  hitokotoData.from = item.from || "公告";
 };
 
-// 更新一言数据
 const updateHitokoto = () => {
-  // 防抖
-  debounce(() => {
-    getHitokotoData();
-  }, 500);
+  currentIndex.value = (currentIndex.value + 1) % hitokotoList.length;
+  setFromList(currentIndex.value);
 };
 
 onMounted(() => {
-  getHitokotoData();
+  setFromList(currentIndex.value);
+  timer = setInterval(() => {
+    updateHitokoto();
+  }, 6000);
+});
+onUnmounted(() => {
+  if (timer) clearInterval(timer);
 });
 </script>
 
