@@ -2,36 +2,36 @@
   {
     "icon": "Blog",
     "name": "博客",
-    "link": "https://blog.rizx.dpdns.org/"
+    "link": "https://blog.rizxcloud.dpdns.org/"
   },
   {
     "icon": "Cloud",
     "name": "网盘",
-    "link": "https://drive.rizx.dpdns.org/"
+    "link": "https://drive.rizxcloud.dpdns.org/"
   },
   {
     "icon": "CompactDisc",
     "name": "资源",
-    "link": "https://blog.rizx.dpdns.org/archives/-resources"
+    "link": "https://blog.rizxcloud.dpdns.org/archives/-resources"
   },
   {
     "icon": "Compass",
     "name": "起始页",
-    "link": "https://nav.rizx.dpdns.org/"
+    "link": "https://nav.rizxcloud.dpdns.org/"
   },
   {
     "icon": "Book",
     "name": "网址集",
-    "link": "https://web.rizx.dpdns.org/"
+    "link": "https://web.rizxcloud.dpdns.org/"
   },
   {
     "icon": "Fire",
     "name": "今日热榜",
-    "link": "https://hot.rizx.dpdns.org/"
+    "link": "https://hot.rizxcloud.dpdns.org/"
   },
   {
     "icon": "LaptopCode",
     "name": "站点监测",
-    "link": "https://status.rizx.dpdns.org/"
+    "link": "https://status.rizxcloud.dpdns.org/"
   }
 ]
