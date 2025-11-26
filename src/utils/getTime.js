@@ -12,7 +12,7 @@ export const getCurrentTime = () => {
   let minute = time.getMinutes() < 10 ? "0" + time.getMinutes() : time.getMinutes();
   let second = time.getSeconds() < 10 ? "0" + time.getSeconds() : time.getSeconds();
   let weekday = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
-  let currentTime = {
+  return {
     year,
     month,
     day,
@@ -21,7 +21,6 @@ export const getCurrentTime = () => {
     second,
     weekday: weekday[time.getDay()],
   };
-  return currentTime;
 };
 
 // 时光胶囊
@@ -117,13 +116,15 @@ export const helloInit = () => {
 
 // 默哀模式
 const anniversaries = {
-  4.4: "清明节",
+  1.27: "国际大屠杀纪念日",
+  4.4: "清明节 & 404.RIP",
   5.12: "汶川大地震纪念日",
   7.7: "中国人民抗日战争纪念日",
   9.18: "九·一八事变纪念日",
   10.11: "币圈162万人爆仓191亿USD",
   12.13: "南京大屠杀死难者国家公祭日",
 };
+
 export const checkDays = () => {
   const myDate = new Date();
   const mon = myDate.getMonth() + 1;

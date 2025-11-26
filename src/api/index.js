@@ -1,5 +1,6 @@
 // import axios from "axios";
 import fetchJsonp from "fetch-jsonp";
+import hitokotoList from "../data/hitokoto.json";
 
 /**
  * 音乐播放器
@@ -45,8 +46,8 @@ export const getPlayerList = async (server, type, id) => {
 
 // 获取一言数据
 export const getHitokoto = async () => {
-  const res = await fetch("https://v1.hitokoto.cn");
-  return await res.json();
+  const i = Math.floor(Math.random() * hitokotoList.length);
+  return hitokotoList[i];
 };
 
 /**

@@ -74,7 +74,7 @@ const getWeatherData = async () => {
       const adCode = await getAdcode(mainKey);
       console.log(adCode);
       if (adCode.infocode !== "10000") {
-        throw "地区查询失败";
+        console.log("地区查询失败");
       }
       weatherData.adCode = {
         city: adCode.city,
@@ -82,6 +82,8 @@ const getWeatherData = async () => {
       };
       // 获取天气信息
       const result = await getWeather(mainKey, weatherData.adCode.adcode);
+      console.log('getWeather param:',mainKey, weatherData.adCode.adcode, "???");
+      console.log('getWeather result:',result);
       weatherData.weather = {
         weather: result.lives[0].weather,
         temperature: result.lives[0].temperature,

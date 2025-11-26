@@ -1,11 +1,10 @@
+@charset "utf-8";
 /*
 作者: imsyy
 主页：https://www.imsyy.top/
 GitHub：https://github.com/imsyy/home
 版权所有，请勿删除
 */
-
-@charset "utf-8";
 
 /*全局样式*/
 
@@ -47,13 +46,13 @@ a:hover {
 @font-face {
   font-family: "Pacifico-Regular";
   font-display: swap;
-  src: url("/font/Pacifico-Regular.ttf") format("truetype");
+  src: url("/public/font/Pacifico-Regular.woff2") format("truetype");
 }
 
 @font-face {
   font-family: "UnidreamLED";
   font-display: swap;
-  src: url("/font/UnidreamLED.ttf") format("truetype");
+  src: url("/public/font/UnidreamLED.ttf") format("truetype");
 }
 
 // 基础样式
@@ -68,18 +67,53 @@ a:hover {
 
 // 卡片样式
 .cards {
-  border-radius: 6px;
-  background-color: #00000040;
-  backdrop-filter: blur(10px);
-  transform: scale(1);
-  transition:
-    backdrop-filter 0.3s,
-    transform 0.3s;
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.06);
+  -webkit-backdrop-filter: blur(3px) saturate(140%);
+  backdrop-filter: blur(3px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: inset 0 0.5px 0 rgba(255, 255, 255, 0.18);
+  transform: translateZ(0);
+  transition: background 0.3s, box-shadow 0.3s, transform 0.3s, border-color 0.3s;
+  &:before {
+    content: "";
+    position: absolute;
+    left: -15%;
+    top: -15%;
+    width: 130%;
+    height: 130%;
+    background:
+      radial-gradient(42% 42% at 22% 18%, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0.08) 52%, transparent 62%),
+      radial-gradient(28% 28% at 78% 62%, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0.08) 46%, transparent 64%);
+    filter: blur(14px);
+    opacity: 0.65;
+    pointer-events: none;
+    mix-blend-mode: soft-light;
+    animation: liquidBlob 14s ease-in-out infinite;
+  }
+  &:after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(165deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 40%),
+      linear-gradient(15deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0) 50%);
+    opacity: 0.35;
+    pointer-events: none;
+    mix-blend-mode: soft-light;
+    transform: translateZ(0);
+    animation: specularSweep 8s ease-in-out infinite alternate;
+  }
   &:hover {
-    transform: scale(1.01);
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: inset 0 0.5px 0 rgba(255, 255, 255, 0.2);
+    transform: scale(1.015);
+    border-color: rgba(255, 255, 255, 0.4);
   }
   &:active {
-    transform: scale(0.98);
+    transform: scale(0.99);
   }
 }
 
@@ -116,7 +150,7 @@ a:hover {
       background-color: #efefef;
       border-radius: 6px;
       text-align: center;
-      font-family: "UnidreamLED";
+      font-family: "UnidreamLED", serif;
       span {
         color: #564d59;
         font-size: 0.9rem;
@@ -186,6 +220,26 @@ a:hover {
   }
   to {
     transform: scale(1);
+  }
+}
+@keyframes liquidBlob {
+  0% {
+    transform: translate(-6%, -5%) scale(1);
+  }
+  50% {
+    transform: translate(3%, 2%) scale(1.03);
+  }
+  100% {
+    transform: translate(-1%, 1%) scale(1.01);
+  }
+}
+
+@keyframes specularSweep {
+  0% {
+    opacity: 0.28;
+  }
+  100% {
+    opacity: 0.45;
   }
 }
 

@@ -1,0 +1,25 @@
+@font-face {
+    font-family: 'HarmonyOS_Regular';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('Pacifico-Regular.woff2') format('woff2'),
+    url('Pacifico-Regular.woff') format('woff');
+}
+@font-face {
+    font-family: 'HarmonyOS_Regular';
+    src: url('HarmonyOS_Sans.woff2') format('woff2'),
+    url('HarmonyOS_Sans.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Pacifico';
+    src: url('Pacifico-Regular.woff2') format('woff2'),
+    url('Pacifico-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
